@@ -26,7 +26,7 @@ load_dotenv()
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    'online-book-store-ryuu.onrender.com',  # ✅ Add this
+    'online-book-5den.onrender.com',  # ✅ Add this
 ]   
 
 
