@@ -1,0 +1,24 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<div class="row">
+    {% for book in books %}
+    <div class="col-md-4 mb-3 fade-in">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ book.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Author: 
+                    <a href="{% url 'author_books' book.author.id %}">{{ book.author.name }}</a>
+                </h6>
+                <p class="card-text">Price: ${{ book.price }}</p>
+                <p>
+                    Categories:
+                    {% for cat in book.categories.all %}
+                        <a href="{% url 'category_books' cat.id %}" class="badge bg-primary">{{ cat.name }}</a>
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

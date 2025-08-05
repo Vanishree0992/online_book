@@ -1,0 +1,9 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h2 class="fade-in">Books by {{ author.name }}</h2>
+<ul class="list-group fade-in">
+    {% for book in books %}
+    <li class="list-group-item">{{ book.title }} - ${{ book.price }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

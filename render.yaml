@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: bookstore-app
+    env: python
+    plan: free
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+      python manage.py migrate
+    startCommand: gunicorn bookstore_project.wsgi:application
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
+    disk:
+      name: sqlite-persistent-disk
+      mountPath: /mnt/data
+      sizeGB: 1
